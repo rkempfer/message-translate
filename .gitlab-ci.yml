@@ -5,11 +5,13 @@ before_script:
 
 deploy-functions:
   stage: deploy
+  environment: Production
   script:
     - cd functions
     - npm install
     - cd ..
-    - firebase deploy --only functions --token $FIREBASE_TOKEN
+    - firebase use --token $FIREBASE_TOKEN electric-icon-175518
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --only functions --token $FIREBASE_TOKEN
   
   only:
     refs:
