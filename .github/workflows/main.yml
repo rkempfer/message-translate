@@ -16,11 +16,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - name: Checkout repository under github workspace
+      uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    # And of course we need to goto our functions folder to deploy
     - name: Install npm packages
       run: |
         cd functions
